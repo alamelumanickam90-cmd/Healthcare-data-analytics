@@ -72,18 +72,6 @@ JOIN dim_procedure_category d
 Output:
 year	category_id	procedure_category	procedure_revenue	total_revenue	per_of_year_total
 
- Business Request 3: Claim Approval Efficiency Leaderboard
--- Objective: Rank healthcare providers by claim approval efficiency
--- Definition: approval_efficiency = claims_approved / claims_submitted
--- Assumption: claims_approved = claims_submitted - claims_denied
--- Scope: All available claim data (no year filter applied)
--- Output:
---   provider_name (city)
---   claims_submitted
---   claims_approved
---   approval_efficiency_ratio
---   approval_efficiency_rank
-
 -- Business Request 3: Claim Approval Efficiency Leaderboard (2024)
 -- Definition: approval_efficiency = claims_approved / claims_submitted
 -- Output: provider_name (city), claims_submitted_2024, claims_approved_2024,
@@ -134,25 +122,10 @@ kanpur				24020911			22759261			0.9475						3
 Mumbai				26367469			24961046			0.9467						4
 bhopal				17929108			16969882			0.9465						5
 
---Business Request 4:compute the change in healthcare access rate from Q1 2021 to Q4 2021 and identify the city with the highest improvement.
-
-Healthcare Metric Definition
-
-Healthcare Access Rate = percentage of population with reliable access to healthcare services (insurance coverage / digital health access 
-/ primary care availability)
-
-Fields Required
-
-city_name
-
-healthcare_access_rate_q1_2021
-
-healthcare_access_rate_q4_2021
-
-delta_healthcare_access_rate
-
-(healthcare_access_rate_q4_2021 − healthcare_access_rate_q1_2021)
-
+-- Business Request 4: Healthcare Access Rate Growth Analysis (2021)
+-- Objective: Identify the city with the highest improvement in healthcare access from Q1 2021 to Q4 2021
+-- Definition: healthcare_access_rate = percentage of population with reliable access to healthcare services
+-- Output: city_name, healthcare_access_rate_q1_2021, healthcare_access_rate_q4_2021, delta_healthcare_access_rate
 
 with base as(
 SELECT d.city as city,
